@@ -1,0 +1,16 @@
+typedef struct tree {
+  item_type item; /* data item */
+  struct tree *parent; /* pointer to parent */
+  struct tree *left; /* pointer to left child */
+  struct tree *right; /* pointer to right child */
+} tree;
+
+tree *search_tree(tree *l, item_type x)
+{
+  if (l == NULL) return(NULL);
+  if (l->item == x) return(l);
+  if (x < l->item)
+    return( search_tree(l->left, x) );
+  else
+    return( search_tree(l->right, x) );
+}
